@@ -10,7 +10,7 @@
 ;;扩展环境，将v绑定到x，然后返回带有该绑定的新环境
 (define ext-env
   (lambda (x v env)
-    (cons (mcons x v) env)))
+    (cons (cons x v) env)))
 
 ;;在环境中查找x，并返回绑定的值
 (define lookup
