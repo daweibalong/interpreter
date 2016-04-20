@@ -7,7 +7,7 @@
 ;;空环境
 (define env0 '())
 
-;;扩展环境，将v绑定到x，然后返回带有该绑定的新环境
+;;扩展环境,将v绑定到x,然后返回带有该绑定的新环境
 (define ext-env
   (lambda (x v env)
     (cons (cons x v) env)))
@@ -17,8 +17,8 @@
   (lambda (x env)
     (let [(p (assq x env))]
       (cond 
-       [(not p) x]
-       [else (cdr p)]))))
+        [(not p) x]
+        [else (cdr p)]))))
 
 ;;定义闭包
 (struct Closure (f env))
@@ -46,16 +46,16 @@
        (let ([v1 (interp1 e1 env)]
              [v2 (interp1 e2 env)])
          (match v1
-         	[(Closure `(lambda (,x) ,e) env1)
-         	(interp1 e (ext-env x v2 env1))]
-        	[else (display "no procedure defined")]))]))]
+           [(Closure `(lambda (,x) ,e) env1)
+            (interp1 e (ext-env x v2 env1))]
+           [else (display "no procedure defined")]))]
       [`(,op ,e1 ,e2)                                   ; 算术表达式
        (let ([v1 (interp1 e1 env)]
              [v2 (interp1 e2 env)])
          (match op
            ['> (> v1 v2)]
            ['< (< v1 v2)]
-	   ['= (= v1 v2)]
+           ['= (= v1 v2)]
            ['+ (+ v1 v2)]
            ['- (- v1 v2)]
            ['* (* v1 v2)]
@@ -75,6 +75,7 @@
              (display (interp1 exp env0))
              (k "exit")))
        (newline)
-     (real)))))
+       (real)))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
